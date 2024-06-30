@@ -10,6 +10,11 @@
       "StackName": "amplify-golfbuddies-dev-6dd0c",
       "StackId": "arn:aws:cloudformation:us-east-2:654654236786:stack/amplify-golfbuddies-dev-6dd0c/bf1a9540-3269-11ef-a8f3-065a611769ad",
       "AmplifyAppId": "d2vs1a5ms339yv"
+    },
+    "categories": {
+      "auth": {
+        "golfbuddies": {}
+      }
     }
   }
 }
