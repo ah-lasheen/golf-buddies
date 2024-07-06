@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet} from 'react-native';
-import Logo from '../../assets/images/golf-buddies-high-resolution-logo.png';
+import Logo from '../../assets/images/golf-buddies-logo.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons/SocialSignInButtons';

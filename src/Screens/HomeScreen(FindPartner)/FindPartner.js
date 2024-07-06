@@ -36,33 +36,6 @@ const FindPartner = () => {
     { name: 'Wendy Roberts', distance: 13, gender: 'female', disability: 'hearing impairment' },
     { name: 'Xander Turner', distance: 11, gender: 'male', disability: 'mobility impairment' },
     { name: 'Yara Phillips', distance: 4, gender: 'female', disability: 'none' },
-    { name: 'Zack Campbell', distance: 8, gender: 'male', disability: 'visual impairment' },
-    { name: 'Alice Carter', distance: 12, gender: 'female', disability: 'none' },
-    { name: 'Bob Rodriguez', distance: 15, gender: 'male', disability: 'none' },
-    { name: 'Charlie Brooks', distance: 8, gender: 'male', disability: 'hearing impairment' },
-    { name: 'David Sanders', distance: 14, gender: 'male', disability: 'mobility impairment' },
-    { name: 'Eva Price', distance: 6, gender: 'female', disability: 'none' },
-    { name: 'Frank Butler', distance: 3, gender: 'male', disability: 'visual impairment' },
-    { name: 'Grace Barnes', distance: 11, gender: 'female', disability: 'none' },
-    { name: 'Hannah Ross', distance: 9, gender: 'female', disability: 'none' },
-    { name: 'Ivan Powell', distance: 7, gender: 'male', disability: 'hearing impairment' },
-    { name: 'Jack Bailey', distance: 13, gender: 'male', disability: 'mobility impairment' },
-    { name: 'Katie Kelly', distance: 5, gender: 'female', disability: 'none' },
-    { name: 'Liam Howard', distance: 2, gender: 'male', disability: 'none' },
-    { name: 'Mona Ward', distance: 10, gender: 'female', disability: 'none' },
-    { name: 'Nathan Cox', distance: 4, gender: 'male', disability: 'none' },
-    { name: 'Olivia Richardson', distance: 6, gender: 'female', disability: 'none' },
-    { name: 'Paul Watson', distance: 9, gender: 'male', disability: 'none' },
-    { name: 'Quinn James', distance: 8, gender: 'other', disability: 'none' },
-    { name: 'Rachel Thompson', distance: 5, gender: 'female', disability: 'none' },
-    { name: 'Sam Martinez', distance: 3, gender: 'male', disability: 'none' },
-    { name: 'Tina Anderson', distance: 10, gender: 'female', disability: 'none' },
-    { name: 'Uma Hernandez', distance: 7, gender: 'female', disability: 'none' },
-    { name: 'Victor Moore', distance: 6, gender: 'male', disability: 'none' },
-    { name: 'Wendy Jackson', distance: 13, gender: 'female', disability: 'none' },
-    { name: 'Xander Martin', distance: 11, gender: 'male', disability: 'none' },
-    { name: 'Yara Garcia', distance: 4, gender: 'female', disability: 'none' },
-    { name: 'Zack Martinez', distance: 8, gender: 'male', disability: 'none' }
   ];
 
   const [gender, setGender] = useState('');
@@ -93,20 +66,20 @@ const FindPartner = () => {
         <TouchableOpacity style={styles.profileButton}>
         <Image
             style={styles.buttonImage}
-            source={require('../../assets/images/output.jpg')}
+            source={require('../../assets/images/blank-profile.png')}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.homeButton}>
           <Image
             style={styles.buttonImage}
-            source={require('../../assets/images/golf-buddies-high-resolution-logo.png')}
+            source={require('../../assets/images/golf-buddies-logo.png')}
           />
         </TouchableOpacity>
         <View style={styles.spacer} />
         <TouchableOpacity style={styles.messageButton}>
         <Image
             style={styles.buttonImage}
-            source={require('../../assets/images/pixlr-image-generator-926b590e-9c9c-4a99-b7d9-5343948eb637.png')}
+            source={require('../../assets/images/direct-messages.png')}
           />
         </TouchableOpacity>
       </View>
@@ -117,7 +90,10 @@ const FindPartner = () => {
         <View style={styles.profileGrid}>
           {filteredProfiles.map((profile, index) => (
             <TouchableOpacity key={index} style={styles.profileItem}>
-              <View style={styles.profilePicturePlaceholder} />
+              <Image 
+                style={styles.profilePicturePlaceholder} 
+                source={require('../../assets/images/blank-profile.png')}
+              />
               <Text>Name: {profile.name}</Text>
               <Text>Distance: {profile.distance} miles</Text>
             </TouchableOpacity>
@@ -127,7 +103,7 @@ const FindPartner = () => {
       
       
       <View style={styles.searchBox}>
-        <Text style={styles.searchTitle}>Search Preferences</Text>
+        <Text style={styles.searchTitle}>Search by:</Text>
         <Text>Gender:</Text>
         <Picker
           selectedValue={gender}
@@ -143,7 +119,7 @@ const FindPartner = () => {
         
         <Text>Distance (miles): {distance}</Text>
           <Slider
-            style={{ width: '100%', height: 40 }}
+            style={{ width: '100%', height: 45 }}
             minimumValue={1}
             maximumValue={100}
             step={1}
@@ -194,12 +170,11 @@ const styles = StyleSheet.create({
   profileButton: {
     width: 50,
     height: 50,
-    borderRadius: 25,
     backgroundColor: '#e8f5e9',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#c8e6c9',
+    borderColor: 'black',
   },
   messageButton: {
     width: 50,
@@ -254,7 +229,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: 2,
     borderRadius: 5,
-    borderWidth: 1,
+    borderWidth: 5,
     borderColor: '#c8e6c9',
     alignItems: 'center',
     height: 500, // Adjust this value to make the profile item taller
@@ -262,7 +237,9 @@ const styles = StyleSheet.create({
   profilePicturePlaceholder: {
     width: '95%', // Make it a square that fits the width of the profile item
     height: 420, // Adjust the height to fit within the profile item
-    borderRadius: 30,
+    borderRadius: 20,
+    borderWidth: 5,
+    borderColor: '#c8e6c9',
     backgroundColor: '#ddd',
     marginBottom: 10,
   },
@@ -287,7 +264,7 @@ const styles = StyleSheet.create({
   },
   picker: {
     height: 40,
-    marginBottom: 10,
+    marginBottom: 25,
   },
 });
 
