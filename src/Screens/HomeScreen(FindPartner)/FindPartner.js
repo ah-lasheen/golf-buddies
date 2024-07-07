@@ -159,13 +159,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
+    position: 'relative',
   },
   homeButton: {
     width: 100,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 15,
+    position: 'absolute', // Position absolutely within the header
+    left: '50%', // Center horizontally
+    transform: [{ translateX: -50 }], // Adjust for the button's width
   },
   profileButton: {
     width: 50,
