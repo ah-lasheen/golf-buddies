@@ -2,41 +2,53 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Picker, Button, Image } from 'react-native';
 import Slider from '@react-native-community/slider';
+import HeaderButtons from '../../components/HeaderButtons/HeaderButtons';
+import { useNavigation} from '@react-navigation/native';
 
 const FindPartner = () => {
+
+  const navigation = useNavigation();
+
   const originalProfiles = [
-    { name: 'John Doe', distance: 5, gender: 'male', disability: 'none' },
-    { name: 'Jane Smith', distance: 3, gender: 'female', disability: 'none' },
-    { name: 'Sam Wilson', distance: 10, gender: 'male', disability: 'none' },
-    { name: 'Alex Johnson', distance: 2, gender: 'other', disability: 'none' },
-    { name: 'Emily Davis', distance: 7, gender: 'female', disability: 'hearing impairment' },
-    { name: 'Michael Brown', distance: 4, gender: 'male', disability: 'mobility impairment' },
-    { name: 'Alice Walker', distance: 12, gender: 'female', disability: 'none' },
-    { name: 'Bob Harris', distance: 15, gender: 'male', disability: 'visual impairment' },
-    { name: 'Charlie Martin', distance: 8, gender: 'male', disability: 'none' },
-    { name: 'David Lee', distance: 14, gender: 'male', disability: 'none' },
-    { name: 'Eva Clark', distance: 6, gender: 'female', disability: 'hearing impairment' },
-    { name: 'Frank White', distance: 3, gender: 'male', disability: 'mobility impairment' },
-    { name: 'Grace Lewis', distance: 11, gender: 'female', disability: 'none' },
-    { name: 'Hannah Young', distance: 9, gender: 'female', disability: 'visual impairment' },
-    { name: 'Ivan Scott', distance: 7, gender: 'male', disability: 'none' },
-    { name: 'Jack King', distance: 13, gender: 'male', disability: 'none' },
-    { name: 'Katie Green', distance: 5, gender: 'female', disability: 'hearing impairment' },
-    { name: 'Liam Hall', distance: 2, gender: 'male', disability: 'mobility impairment' },
-    { name: 'Mona Allen', distance: 10, gender: 'female', disability: 'none' },
-    { name: 'Nathan Wright', distance: 4, gender: 'male', disability: 'visual impairment' },
-    { name: 'Olivia Lopez', distance: 6, gender: 'female', disability: 'none' },
-    { name: 'Paul Hill', distance: 9, gender: 'male', disability: 'none' },
-    { name: 'Quinn Adams', distance: 8, gender: 'other', disability: 'hearing impairment' },
-    { name: 'Rachel Baker', distance: 5, gender: 'female', disability: 'mobility impairment' },
-    { name: 'Sam Nelson', distance: 3, gender: 'male', disability: 'none' },
-    { name: 'Tina Carter', distance: 10, gender: 'female', disability: 'visual impairment' },
-    { name: 'Uma Mitchell', distance: 7, gender: 'female', disability: 'none' },
-    { name: 'Victor Perez', distance: 6, gender: 'male', disability: 'none' },
-    { name: 'Wendy Roberts', distance: 13, gender: 'female', disability: 'hearing impairment' },
-    { name: 'Xander Turner', distance: 11, gender: 'male', disability: 'mobility impairment' },
-    { name: 'Yara Phillips', distance: 4, gender: 'female', disability: 'none' },
+      { name: 'Sam Wilson', distance: 10, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/sam_wilson.png') },
+      { name: 'Alex Johnson', distance: 2, gender: 'other', disability: 'none', image: require('../../assets/originalProfiles/alex_johnson.png') },
+      { name: 'Emily Davis', distance: 7, gender: 'female', disability: 'hearing impairment', image: require('../../assets/originalProfiles/emily_davis.png') },
+      { name: 'Michael Brown', distance: 4, gender: 'male', disability: 'mobility impairment', image: require('../../assets/originalProfiles/michael_brown.png') },
+      { name: 'Alice Walker', distance: 12, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/alice_walker.png') },
+      { name: 'Bob Harris', distance: 15, gender: 'male', disability: 'visual impairment', image: require('../../assets/originalProfiles/bob_harris.png') },
+      { name: 'Charlie Martin', distance: 8, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/charlie_martin.png') },
+      { name: 'David Lee', distance: 14, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/david_lee.png') },
+      { name: 'Eva Clark', distance: 6, gender: 'female', disability: 'hearing impairment', image: require('../../assets/originalProfiles/eva_clark.png') },
+      { name: 'Frank White', distance: 3, gender: 'male', disability: 'mobility impairment', image: require('../../assets/originalProfiles/frank_white.png') },
+      { name: 'Grace Lewis', distance: 11, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/grace_lewis.png') },
+      { name: 'Hannah Young', distance: 9, gender: 'female', disability: 'visual impairment', image: require('../../assets/originalProfiles/hannah_young.png') },
+      { name: 'Ivan Scott', distance: 7, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/ivan_scott.png') },
+      { name: 'Jack King', distance: 13, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/jack_king.png') },
+      { name: 'Katie Green', distance: 5, gender: 'female', disability: 'hearing impairment', image: require('../../assets/originalProfiles/katie_green.png') },
+      { name: 'Liam Hall', distance: 2, gender: 'male', disability: 'mobility impairment', image: require('../../assets/originalProfiles/liam_hall.png') },
+      { name: 'Mona Allen', distance: 10, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/mona_allen.png') },
+      { name: 'Nathan Wright', distance: 4, gender: 'male', disability: 'visual impairment', image: require('../../assets/originalProfiles/nathan_wright.png') },
+      { name: 'Olivia Lopez', distance: 6, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/olivia_lopez.png') },
+      { name: 'Paul Hill', distance: 9, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/paul_hill.png') },
+      { name: 'Quinn Adams', distance: 8, gender: 'other', disability: 'hearing impairment', image: require('../../assets/originalProfiles/quinn_adams.png') },
+      { name: 'Rachel Baker', distance: 5, gender: 'female', disability: 'mobility impairment', image: require('../../assets/originalProfiles/rachel_baker.png') },
+      { name: 'Sam Nelson', distance: 3, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/sam_nelson.png') },
+      { name: 'Tina Carter', distance: 10, gender: 'female', disability: 'visual impairment', image: require('../../assets/originalProfiles/tina_carter.png') },
+      { name: 'Uma Mitchell', distance: 7, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/uma_mitchell.png') },
+      { name: 'Victor Perez', distance: 6, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/victor_perez.png') },
+      { name: 'Wendy Roberts', distance: 13, gender: 'female', disability: 'hearing impairment', image: require('../../assets/originalProfiles/wendy_roberts.png') },
+      { name: 'Xander Turner', distance: 11, gender: 'male', disability: 'mobility impairment', image: require('../../assets/originalProfiles/xander_turner.png') },
+      { name: 'Yara Phillips', distance: 4, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/yara_phillips.png') }, 
+      { name: 'John Doe', distance: 5, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/john_doe.png') },
+      { name: 'Jane Smith', distance: 3, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/jane_smith.png') },  
   ];
+
+  
+  const onHomeButtonPressed = () => {
+    
+    navigation.navigate('Home');
+  }
+
 
   const [gender, setGender] = useState('');
   const [distance, setDistance] = useState('');
@@ -61,27 +73,17 @@ const FindPartner = () => {
   };
 
   return (
+    
+    //first displays header components including buttons at top of screen
+    //second displays the profile lists
+    //then displays search preferences and options
+
     <View style={styles.container}>
+      
       <View style={styles.header}>
-        <TouchableOpacity style={styles.profileButton}>
-        <Image
-            style={styles.buttonImage}
-            source={require('../../assets/images/blank-profile.png')}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.homeButton}>
-          <Image
-            style={styles.buttonImage}
-            source={require('../../assets/images/golf-buddies-logo.png')}
-          />
-        </TouchableOpacity>
-        <View style={styles.spacer} />
-        <TouchableOpacity style={styles.messageButton}>
-        <Image
-            style={styles.buttonImage}
-            source={require('../../assets/images/direct-messages.png')}
-          />
-        </TouchableOpacity>
+        
+        <HeaderButtons/>
+        
       </View>
       
       
@@ -92,15 +94,16 @@ const FindPartner = () => {
             <TouchableOpacity key={index} style={styles.profileItem}>
               <Image 
                 style={styles.profilePicturePlaceholder} 
-                source={require('../../assets/images/blank-profile.png')}
+                source={profile.image}
               />
               <Text>Name: {profile.name}</Text>
               <Text>Distance: {profile.distance} miles</Text>
             </TouchableOpacity>
           ))}
         </View>
+        <marketplaceButton/>
+        <bettingButton/>
       </View>
-      
       
       <View style={styles.searchBox}>
         <Text style={styles.searchTitle}>Search by:</Text>
@@ -161,44 +164,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     position: 'relative',
   },
-  homeButton: {
-    width: 100,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute', // Position absolutely within the header
-    left: '50%', // Center horizontally
-    transform: [{ translateX: -50 }], // Adjust for the button's width
-  },
-  profileButton: {
-    width: 50,
-    height: 50,
-    backgroundColor: '#e8f5e9',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
-  },
-  messageButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: '#e8f5e9',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#c8e6c9',
-  },
-  buttonImage: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'stretch',
-    borderRadius: 10, // Change this value to adjust the border radius
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#4caf50',
-  },
   profileGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -210,6 +175,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     flexDirection: 'row',
+    marginTop: 20,
   },
   profileList: {
     flex: 3,

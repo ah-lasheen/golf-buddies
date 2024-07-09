@@ -3,7 +3,7 @@ import CustomButton from '../CustomButton/CustomButton'
 
 
 const SocialSignInButtons = () => {
-    const onSignInGoogle = () => {
+      const onSignInGoogle = () => {
         console.log('onSignInGoogle');
       }
     
@@ -29,7 +29,7 @@ const SocialSignInButtons = () => {
                     shadow={true}
                 />
             </>
-    )
+        )
 }
 
 export default SocialSignInButtons
