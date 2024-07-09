@@ -3,11 +3,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Picker, Button, Image } from 'react-native';
 import Slider from '@react-native-community/slider';
 import HeaderButtons from '../../components/HeaderButtons/HeaderButtons';
-import { useNavigation} from '@react-navigation/native';
 
 const FindPartner = () => {
-
-  const navigation = useNavigation();
 
   const originalProfiles = [
       { name: 'Sam Wilson', distance: 10, gender: 'male', disability: 'none', image: require('../../assets/originalProfiles/sam_wilson.png') },
@@ -43,13 +40,6 @@ const FindPartner = () => {
       { name: 'Jane Smith', distance: 3, gender: 'female', disability: 'none', image: require('../../assets/originalProfiles/jane_smith.png') },  
   ];
 
-  
-  const onHomeButtonPressed = () => {
-    
-    navigation.navigate('Home');
-  }
-
-
   const [gender, setGender] = useState('');
   const [distance, setDistance] = useState('');
   const [disability, setDisability] = useState('');
@@ -82,7 +72,7 @@ const FindPartner = () => {
       
       <View style={styles.header}>
         
-        <HeaderButtons/>
+        <HeaderButtons />
         
       </View>
       
@@ -175,7 +165,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 40,
   },
   profileList: {
     flex: 3,
